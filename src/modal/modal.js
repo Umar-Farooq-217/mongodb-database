@@ -7,11 +7,17 @@ const userSchema = new Schema({
         type: String,
         required: true
       },
-    email:String,
+    email:{
+      type: String,
+      required: true
+    },
     id: {
         type: Number,
         required: true
       },
-    age:Number
+    age:{
+      type: Number,
+      required: true
+    }
 })
 export const userModel = mongoose.models?.students || mongoose.model('students',userSchema)

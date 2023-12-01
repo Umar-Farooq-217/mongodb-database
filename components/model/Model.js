@@ -3,61 +3,61 @@ import React, { useState } from 'react';
 
 
 const Modal = ({ onClose }) => {
-    const [formData, setFormData] = useState({
-      id: '',
-      name: '',
-      age: '',
-      email: '',
-    });
-  
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    };
-  
-    const fetchData = async () => {
-      try {
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
-  
-        var raw = JSON.stringify({
-          name: formData.name,
-          id: parseInt(formData.id), // Assuming id is an integer
-          email: formData.email,
-          age: parseInt(formData.age), // Assuming age is an integer
-        });
-  
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow',
-        };
-  
-        const response = await fetch('http://localhost:3000/api/students', requestOptions);
-        if (response.ok) {
-          // alert('Data has been submitted');
-          setFormData({ id: '', name: '', age: '', email: '' }); // Clear form fields after successful submission
-          onClose(); 
-        } else {
-          throw new Error('Failed to submit data');
-        }
-      } catch (error) {
-        console.log('error', error);
+  const [formData, setFormData] = useState({
+    id: '',
+    name: '',
+    age: '',
+    email: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const fetchData = async () => {
+    try {
+      var myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+
+      var raw = JSON.stringify({
+        name: formData.name,
+        id: parseInt(formData.id), // Assuming id is an integer
+        email: formData.email,
+        age: parseInt(formData.age), // Assuming age is an integer
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+
+      const response = await fetch('http://localhost:3000/api/students', requestOptions);
+      if (response.ok) {
+        // alert('Data has been submitted');
+        setFormData({ id: '', name: '', age: '', email: '' }); // Clear form fields after successful submission
+        onClose();
+      } else {
+        throw new Error('Failed to submit data');
       }
-    };
-  
-    const handleSave = async () => {
-      fetchData();
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  const handleSave = async () => {
+    fetchData();
 
 
 
-    };
-  
-  
+  };
+
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">

@@ -3,9 +3,15 @@ import mongoose from "mongoose";
 const {Schema} = mongoose;
 
 const userSchema = new Schema({
-    name:String,
+    name: {
+        type: String,
+        required: true
+      },
     email:String,
-    id:Number,
+    id: {
+        type: Number,
+        required: true
+      },
     age:Number
 })
 export const userModel = mongoose.models?.students || mongoose.model('students',userSchema)

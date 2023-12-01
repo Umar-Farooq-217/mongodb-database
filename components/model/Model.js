@@ -39,8 +39,9 @@ const Modal = ({ onClose }) => {
   
         const response = await fetch('http://localhost:3000/api/students', requestOptions);
         if (response.ok) {
-          alert('Data has been submitted');
+          // alert('Data has been submitted');
           setFormData({ id: '', name: '', age: '', email: '' }); // Clear form fields after successful submission
+          onClose(); 
         } else {
           throw new Error('Failed to submit data');
         }
@@ -51,6 +52,9 @@ const Modal = ({ onClose }) => {
   
     const handleSave = async () => {
       fetchData();
+
+
+
     };
   
   

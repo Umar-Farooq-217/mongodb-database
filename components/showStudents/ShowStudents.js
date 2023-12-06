@@ -1,7 +1,8 @@
 'use client'
  import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import Modal from '../model/Model';
+import DeleteButton from '../deleteButton/DeleteButton';
 export default function ShowStudents() {
     const [users, setUsers] = useState([]);
     const [showList, setShowList] = useState(false);
@@ -29,6 +30,7 @@ export default function ShowStudents() {
         }
     }, [showList]);
 
+    
     const openUpdateModal = (user) => {
         setSelectedUser(user);
         setShowModal(true);
@@ -41,6 +43,20 @@ export default function ShowStudents() {
     }, [showList]);
 
 
+    const handleDelete = async (userId) => {
+        try {
+         const data=  await axios.delete(`http://localhost:3000/api/users/${userId}`);
+         console.log('data',data);
+          // If successful, update the state or perform any necessary actions
+          // For example, remove the deleted item from the local state (users)
+          const updatedUsers = users.filter((user) => user._id !== userId);
+          setUsers(updatedUsers);
+        } catch (error) {
+          console.error('Error deleting user:', error);
+          // Handle error state or display a notification to the user
+        }
+
+ 
     return (
         <div className="container mx-auto mt-8 px-4">
             <button
@@ -68,12 +84,22 @@ export default function ShowStudents() {
                                 <td className=" border px-4 py-2">{user.name}</td>
                                 <td className=" border px-4 py-2">{user.email}</td>
                                 <td className=" border px-4 py-2">{user.age}</td>
-                                <td className=" border px-4 py-2"><button className='my-1 mx-2 hover:bg-red-600 py-2 px-2 rounded bg-red-400 ' onClick={() => openUpdateModal(user)}>Update</button></td>
-                                <td className=" border px-4 py-2"><button className='my-1 mx-2 hover:bg-red-600 py-2 px-2 rounded bg-red-400'>Delete</button></td>
+                                <td className=" border px-4 py-2"> <button
+                                className='my-1 mx-2 hover:bg-red-600 py-2 px-2 rounded bg-red-400'
+                                onClick={() => handleDelete(user._id)}
+                              >
+                                Delete
+                              </button></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+            )} 
+            {showModal && (
+                <Modal
+                    user={selectedUser}
+                    onClose={() => setShowModal(false)}
+                />
             )}
             
             
@@ -81,14 +107,5 @@ export default function ShowStudents() {
 
         </div>
     );
-}
+};
 
-// <ul>
-//                     {users.map((user) => (
-//                         <li key={user._id} className="mb-2">
-//                             <p className="text-lg font-semibold">Name: {user.name}</p>
-//                             <p>Email: {user.email}</p>
-//                             <p>Age: {user.age}</p>
-//                         </li>
-//                     ))}
-//                 </ul>

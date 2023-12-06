@@ -113,6 +113,12 @@ const Modal = ({ onClose }) => {
             >
               Save
             </button>
+            <button
+            className="px-6 py-2 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-red-500 rounded-md shadow outline-none active:bg-red-600 hover:shadow-lg focus:outline-none"
+            onClick={onClose} // Close modal without saving changes
+          >
+            Cancel
+          </button>
           </div>
         </div>
       </div>

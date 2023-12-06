@@ -45,3 +45,25 @@ export const GET = async () => {
       });
     }
   };
+
+
+  export const DELETE = async(req)=>{
+   try {
+    const body = await req.json();
+    console.log('body',body);
+    if(user.id){
+      await userModel.deleteOne({
+        id:user.id
+      })
+      return NextResponse.json({ message: "successfully product deleted" })
+    
+    }
+   } catch (error) {
+    return NextResponse.json({
+      message: "something went wrong",
+      error: JSON.stringify(error)
+  })
+   }
+
+
+  }

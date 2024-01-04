@@ -55,6 +55,7 @@ export default function ShowStudents() {
           console.error('Error deleting user:', error);
           // Handle error state or display a notification to the user
         }
+    }
 
  
     return (
@@ -86,10 +87,20 @@ export default function ShowStudents() {
                                 <td className=" border px-4 py-2">{user.age}</td>
                                 <td className=" border px-4 py-2"> <button
                                 className='my-1 mx-2 hover:bg-red-600 py-2 px-2 rounded bg-red-400'
-                                onClick={() => handleDelete(user._id)}
-                              >
-                                Delete
-                              </button></td>
+                                onClick={() => openUpdateModal(user)}
+                            >
+                                Update
+                            </button></td>
+
+                            <td className=" border px-4 py-2">
+                            <button
+                            className='my-1 mx-2 hover:bg-red-600 py-2 px-2 rounded bg-red-400'
+                            onClick={() => handleDelete(user._id)}
+                          >
+                            Delete
+                          </button>
+                            </td>
+
                             </tr>
                         ))}
                     </tbody>
@@ -107,5 +118,5 @@ export default function ShowStudents() {
 
         </div>
     );
-};
+}
 

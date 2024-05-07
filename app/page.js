@@ -24,6 +24,7 @@ export default function page() {
         <AddStudents />
       </div>
       <div className="">
+        <div className=""></div>
 
 
         <form class="max-w-md mx-auto">

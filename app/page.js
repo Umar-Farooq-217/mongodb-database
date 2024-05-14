@@ -2,12 +2,14 @@
 import AddStudents from "@/components/addStudents/AddStudents";
 import Navbar from "@/components/navbar/Navbar";
 import { useState } from "react";
+import dbConnect from "@/src/config/db";
 
 export default function page() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const submitHandler = () => {
+
 
   }
 

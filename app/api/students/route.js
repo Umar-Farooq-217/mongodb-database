@@ -11,6 +11,10 @@ var users = [
     }
 ]
 
+export const GET = async ()=>{
+    var body = users
+    return NextResponse.json(users)
+}
 
 
 

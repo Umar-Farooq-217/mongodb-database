@@ -3,11 +3,25 @@ import AddStudents from "@/components/addStudents/AddStudents";
 import Navbar from "@/components/navbar/Navbar";
 import { useState } from "react";
 import dbConnect from "@/src/config/db";
+import { userModel } from "@/model/users";
 
-export default function page() {
+
+const fetchUsers = async ()=>{
+  try {
+    
+    const data = await userModel.find()
+    console.log('this is users',data);
+  } catch (error) {
+    console.log('error',error);
+  }
+}
+
+
+export default async function page() {
+  const  data = await fetchUsers()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+console.log('these are users',data);
   const submitHandler = () => {
 
 
@@ -16,6 +30,7 @@ export default function page() {
 
 
   return (
+    
     <div>
       <div className="text-2xl font-bold text-center my-3">
         <h1 className="mb-5">
@@ -40,7 +55,7 @@ export default function page() {
           </div>
           <button type="submit" onClick={submitHandler} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
         </form>
-         
+
       </div>
 
     </div>

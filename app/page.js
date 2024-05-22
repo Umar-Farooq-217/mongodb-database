@@ -7,7 +7,7 @@ import { userModel } from "@/model/users";
 
 const fetchUsers = async () => {
   try {
-    await dbConnect(); // Ensure database connection is established
+    await dbConnect(); 
     const data = await userModel.find();
     return data;
   } catch (error) {

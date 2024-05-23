@@ -1,5 +1,3 @@
-'use client'
-import { useState, useEffect } from 'react';
 import AddStudents from "@/components/addStudents/AddStudents";
 import Navbar from "@/components/navbar/Navbar";
 import dbConnect from "@/src/config/db";
@@ -17,15 +15,8 @@ const fetchUsers = async () => {
 };
 
 export default function Page() {
-  const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await fetchUsers();
-      setUsers(data);
-    };
-    getUsers();
-  }, []);
+ 
 
   return (
     <div>

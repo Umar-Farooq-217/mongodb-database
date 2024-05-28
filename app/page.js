@@ -1,28 +1,28 @@
 import AddStudents from "@/components/addStudents/AddStudents";
-import Navbar from "@/components/navbar/Navbar";
-import dbConnect from "@/src/config/db";
-import { userModel } from "@/model/users";
+// import Navbar from "@/components/navbar/Navbar";
+// import dbConnect from "@/src/config/db";
+// import { userModel } from "@/model/users";
 
-const fetchUsers = async () => {
-  try {
-    await dbConnect(); 
-    const data = await userModel.find();
-    console.log('data is ',data);
-    return data;
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    return [];
-  }
-};
+// const fetchUsers = async () => {
+//   try {
+//     await dbConnect(); 
+//     const data = await userModel.find();
+//     console.log('data is ',data);
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching users:', error);
+//     return [];
+//   }
+// };
 
 export default async function Page() {
-const users = await fetchUsers()
+// const users = await fetchUsers()
  
 
   return (
     <div>
-      <Navbar/>
-      <div className="text-center">
+      {/* <Navbar/> */}
+      {/* <div className="text-center">
         {users.length > 0 ? (
           users.map((user) => (
             <div className="" key={user._id}>
@@ -33,7 +33,7 @@ const users = await fetchUsers()
         ) : (
           <p>No users found</p>
         )}
-      </div>
+      </div> */}
       <div className="text-2xl font-bold text-center my-3">
         <h1 className="mb-5">Practice For MongoDB</h1>
         <AddStudents />
@@ -72,12 +72,12 @@ const users = await fetchUsers()
               Password
             </label>
           </div>
-          <button
+          {/* <button
             type="submit"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
-          </button>
+          </button> */}
         </form>
       </div>
     </div>

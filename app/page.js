@@ -7,6 +7,7 @@ const fetchUsers = async () => {
   try {
     await dbConnect(); 
     const data = await userModel.find();
+    console.log('data is ',data);
     return data;
   } catch (error) {
     console.error('Error fetching users:', error);
@@ -14,8 +15,8 @@ const fetchUsers = async () => {
   }
 };
 
-export default function Page() {
-
+export default async function Page() {
+const users = await fetchUsers()
  
 
   return (

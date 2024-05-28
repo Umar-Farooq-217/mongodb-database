@@ -21,7 +21,7 @@ const users = await fetchUsers()
 
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div className="text-center">
         {users.length > 0 ? (
           users.map((user) => (

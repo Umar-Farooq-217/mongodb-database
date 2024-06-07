@@ -18,10 +18,10 @@ export default function page() {
           <span className='text-3xl text-white mr-1 pt-2'><ion-icon name="logo-ionic"></ion-icon></span>
           Umar
         </div>
-        <div onClick={()=>setOpen(!open)} className="text-3xl absolute top-2 right-4">
+        <div onClick={()=>setOpen(!open)} className="md:hidden text-3xl absolute top-2 right-4">
         <ion-icon  name={open ? 'close':'menu'}></ion-icon>
         </div>
-<ul className="md:flex md:justify-between md:items-center sm:ml-10 ">
+<ul className={`md:flex md:justify-between md:items-center sm:pl-10 bg-indigo-500 absolute md:static transition-all duration-500 ease-in w-full md:w-auto md:z-auto z-[-1] ${open? 'top-12':'top-[-500px]'} `}>
   {
     links.map((link)=>(
       <li className="md:ml-9 hover:text-indigo-300 sm:py-3" key={link.name}>
@@ -29,7 +29,7 @@ export default function page() {
       </li>
     ))
   }
-  <button className="bg-indigo-300 px-4 py-1 md:ml-7 rounded-xl hover:scale-105 md:mb-0 sm:mb-3">Sign UP</button>
+  <button className="bg-indigo-300 px-4 py-1 md:ml-7 rounded-xl hover:scale-105 md:mb-0 sm:mb-3 ">Sign UP</button>
 </ul>
       </div>
     </div>
